@@ -1,0 +1,35 @@
+{
+  "name": "react-easy-form",
+  "version": "1.0.0",
+  "description": "基于React，Ant-Design封装的Form业务组件，方便使用。",
+  "main": "rollup.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lingxiao-Zhu/react-easy-form.git"
+  },
+  "keywords": [
+    "react",
+    "antd",
+    "Ant-Design",
+    "form",
+    "ant-desgin"
+  ],
+  "author": "Larry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lingxiao-Zhu/react-easy-form/issues"
+  },
+  "homepage": "https://github.com/lingxiao-Zhu/react-easy-form#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0"
+  }
+}
