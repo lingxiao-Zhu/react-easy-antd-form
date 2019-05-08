@@ -1,0 +1,15 @@
+npm-debug.log
+yarn.lock
+node_modules/
+dist
+/lib
+/lib
+*.log
+*.log.*
+.DS_Store
+*.iml
+.idea/
+*.tmp
+build/
+.cache/
+coverage/
