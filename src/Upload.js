@@ -4,12 +4,13 @@ import { Upload, Icon, Button } from 'antd';
 const uploadButton = (
   <Button>
     <Icon type="upload" />
-    {' '}
-点击上传
+    <span> 点击上传</span>
   </Button>
 );
 
 class MyUpload extends Component {
+  state = {};
+
   render() {
     return <Upload listType="picture">{uploadButton}</Upload>;
   }

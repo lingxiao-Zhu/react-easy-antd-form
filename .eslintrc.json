@@ -19,6 +19,11 @@
   "plugins": ["react"],
   "rules": {
     "react/jsx-filename-extension": 0,
-    "react/forbid-prop-types": 0
+    "react/forbid-prop-types": 0,
+    "no-unused-expressions": 0,
+    "react/no-array-index-key": 0,
+    "no-trailing-spaces": 0,
+    "indent": 0,
+    "comma-dangle": 0
   }
 }

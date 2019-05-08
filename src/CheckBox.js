@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Checkbox } from 'antd';
 
 const CheckboxGroup = Checkbox.Group;
@@ -6,12 +7,14 @@ const CheckboxGroup = Checkbox.Group;
 class MyCheckbox extends Component {
   componentDidMount() {
     if (!this.isOptionsValid()) {
+      // eslint-disable-next-line no-console
       console.error('使用Checkbox组件请传入options数组，且长度要大于0');
     }
   }
 
   isOptionsValid = () => {
-    const { options } = this.props.item;
+    const { item } = this.props;
+    const { options } = item;
 
     return options && Array.isArray(options) && options.length > 0;
   };
@@ -28,5 +31,9 @@ class MyCheckbox extends Component {
     );
   }
 }
+
+MyCheckbox.propTypes = {
+  item: PropTypes.object.isRequired,
+};
 
 export default MyCheckbox;

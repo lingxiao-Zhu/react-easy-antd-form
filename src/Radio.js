@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Radio } from 'antd';
 
 const RadioGroup = Radio.Group;
 
 class MyRadio extends Component {
   componentDidMount() {
-    const a = 1;
     if (!this.isOptionsValid()) {
+      // eslint-disable-next-line no-console
       console.error('使用Radio组件请传入options数组，且长度要大于0');
     }
   }
 
   isOptionsValid = () => {
-    const { options } = this.props.item;
+    const { item } = this.props;
+    const { options } = item;
 
     return options && Array.isArray(options) && options.length > 0;
   };
@@ -35,5 +37,9 @@ class MyRadio extends Component {
     );
   }
 }
+
+MyRadio.propTypes = {
+  item: PropTypes.object.isRequired
+};
 
 export default MyRadio;

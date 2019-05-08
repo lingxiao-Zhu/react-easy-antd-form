@@ -18,7 +18,8 @@ class Index extends React.Component {
 
     reslutPromise.then((res) => {
       // 判断外部onSubmit是否是promise
-      const Q = this.props.onSubmit(res);
+      const { onSubmit } = this.props;
+      const Q = onSubmit(res);
 
       if (isPromise(Q)) {
         this.setState({
@@ -36,8 +37,8 @@ class Index extends React.Component {
 
   render() {
     const {
-      modal, title, visible, onCancel, ...otherProps
-    } = this.props;
+ modal, title, visible, onCancel, ...otherProps 
+} = this.props;
     const { confirmLoading } = this.state;
 
     return modal ? (
@@ -58,18 +59,17 @@ class Index extends React.Component {
 
 Index.propTypes = {
   fields: PropTypes.array.isRequired,
-  layout: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  layout: PropTypes.string,
+  title: PropTypes.string.isRequired,
   // 下面的属性都是modal模式下独有的
-  modal: PropTypes.bool.isRequired,
-  visible: PropTypes.bool,
+  modal: PropTypes.bool,
+  visible: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
 
 Index.defaultProps = {
   modal: false,
-  onSubmit: () => {},
   layout: 'vertical', // "vertical", "horizental"
 };
 

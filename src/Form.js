@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { Form, Row, Col } from "antd";
-import { typeConvertion, config } from "./_utils";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { Form, Row, Col } from 'antd';
+import { typeConvertion, config } from './_utils';
 
 const FormItem = Form.Item;
 
@@ -12,13 +12,15 @@ class MyForm extends PureComponent {
     </FormItem>
   );
 
-  handleSubmit = e => {
-    e && typeof e === "object" && e.preventDefault();
+  handleSubmit = (e) => {
+    e && typeof e === 'object' && e.preventDefault();
+
+    const { form } = this.props;
 
     return new Promise((resove, reject) => {
-      this.props.form.validateFields((err, fieldsValue) => {
+      form.validateFields((err, fieldsValue) => {
         if (err) {
-          reject("请将信息填写完整");
+          reject(new Error('请将信息填写完整'));
         }
         resove(fieldsValue);
       });
@@ -31,7 +33,7 @@ class MyForm extends PureComponent {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        {layout === "vertical" ? (
+        {layout === 'vertical' ? (
           fields.map(item => this.renderFormItem(item, getFieldDecorator))
         ) : (
           <Row type="flex" gutter={30}>
@@ -47,15 +49,22 @@ class MyForm extends PureComponent {
   }
 }
 
+MyForm.propTypes = {
+  form: PropTypes.object.isRequired,
+  fields: PropTypes.array.isRequired,
+  layout: PropTypes.string.isRequired,
+};
+
 const HocForm = Form.create()(MyForm);
 
 HocForm.propTypes = {
+  form: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
-  layout: PropTypes.string
+  layout: PropTypes.string,
 };
 
 HocForm.defaultProps = {
-  layout: "vertical" // "vertical", "horizental"
+  layout: 'vertical', // "vertical", "horizental"
 };
 
 export default HocForm;
