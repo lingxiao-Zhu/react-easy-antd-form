@@ -7,9 +7,9 @@
 ![](https://img.shields.io/github/last-commit/lingxiao-Zhu/react-easy-antd-form.svg)
 ![](https://img.shields.io/github/languages/code-size/lingxiao-Zhu/react-easy-antd-form.svg)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/peer/react.svg)
-![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/peer/antd.svg)
-![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/peer/prop-types.svg)
+![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/react.svg)
+![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/antd.svg)
+![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/prop-types.svg)
 
 ## Install(安装)
 
