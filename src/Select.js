@@ -1,17 +1,20 @@
-import React, { Component } from "react";
-import { Select } from "antd";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Select } from 'antd';
 
-const Option = Select.Option;
+const { Option } = Select;
 
 class MySelect extends Component {
   componentDidMount() {
     if (!this.isOptionsValid()) {
-      console.error("使用Select组件请传入options数组，且长度要大于0");
+      // eslint-disable-next-line no-console
+      console.error('使用Select组件请传入options数组，且长度要大于0');
     }
   }
 
   isOptionsValid = () => {
-    const { options } = this.props.item;
+    const { item } = this.props;
+    const { options } = item;
 
     return options && Array.isArray(options) && options.length > 0;
   };
@@ -30,9 +33,13 @@ class MySelect extends Component {
         ))}
       </Select>
     ) : (
-      <span style={{ color: "red" }}>请检查配置项是否正确！！</span>
+      <span style={{ color: 'red' }}>请检查配置项是否正确！！</span>
     );
   }
 }
+
+MySelect.propTypes = {
+  item: PropTypes.object.isRequired
+};
 
 export default MySelect;
