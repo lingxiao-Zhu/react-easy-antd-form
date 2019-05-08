@@ -1,5 +1,5 @@
 {
-  "name": "react-easy-form",
+  "name": "react-easy-antd-form",
   "version": "1.0.0",
   "description": "基于React，Ant-Design封装的Form业务组件，方便使用。",
   "main": "build/lib/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lingxiao-Zhu/react-easy-form.git"
+    "url": "git+https://github.com/lingxiao-Zhu/react-easy-antd-form.git"
   },
   "keywords": [
     "react",
@@ -21,9 +21,9 @@
   "author": "Larry",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lingxiao-Zhu/react-easy-form/issues"
+    "url": "https://github.com/lingxiao-Zhu/react-easy-antd-form/issues"
   },
-  "homepage": "https://github.com/lingxiao-Zhu/react-easy-form#readme",
+  "homepage": "https://github.com/lingxiao-Zhu/react-easy-antd-form#readme",
   "dependencies": {
     "antd": "^3.17.0",
     "prop-types": "^15.7.2",
