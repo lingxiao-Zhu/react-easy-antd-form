@@ -1,16 +1,34 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "modules": false,
-        "targets": {
-          "browsers": ["last 2 versions", "safari >= 7"]
-        }
-      }
-    ],
-    "react",
-    "stage-2"
-  ],
-  "plugins": ["external-helpers"]
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": ["last 2 versions", "safari >= 7"]
+            }
+          }
+        ],
+        "react",
+        "stage-2"
+      ]
+    },
+    "build": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false,
+            "targets": {
+              "browsers": ["last 2 versions", "safari >= 7"]
+            }
+          }
+        ],
+        "react",
+        "stage-2"
+      ],
+      "plugins": ["external-helpers"]
+    }
+  }
 }
