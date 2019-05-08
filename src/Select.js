@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Select } from "antd";
 
-const Option = Select.Option;
+const { Option } = Select;
 
 class MySelect extends Component {
   componentDidMount() {

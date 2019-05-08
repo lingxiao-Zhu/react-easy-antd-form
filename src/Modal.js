@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import { Modal } from "antd";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import { Modal } from 'antd';
+import PropTypes from 'prop-types';
 
 class MyModal extends PureComponent {
   /**
@@ -11,7 +11,9 @@ class MyModal extends PureComponent {
   };
 
   render() {
-    const { title, confirmLoading, visible, onCancel } = this.props;
+    const {
+      title, confirmLoading, visible, onCancel,
+    } = this.props;
 
     return (
       <Modal
@@ -34,7 +36,7 @@ class MyModal extends PureComponent {
 MyModal.propTypes = {
   confirmLoading: PropTypes.bool.isRequired,
   visible: PropTypes.bool.isRequired,
-  onOk: PropTypes.func.isRequired // 调用form的handlesubmit
+  onOk: PropTypes.func.isRequired, // 调用form的handlesubmit
 };
 
 export default MyModal;

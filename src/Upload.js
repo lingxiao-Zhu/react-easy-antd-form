@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import { Upload, Icon, Button } from "antd";
+import React, { Component } from 'react';
+import { Upload, Icon, Button } from 'antd';
 
 const uploadButton = (
   <Button>
-    <Icon type="upload" /> 点击上传
+    <Icon type="upload" />
+    {' '}
+点击上传
   </Button>
 );
 

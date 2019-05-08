@@ -6,13 +6,11 @@ import { typeConvertion, config } from "./_utils";
 const FormItem = Form.Item;
 
 class MyForm extends PureComponent {
-  renderFormItem = (item, getFieldDecorator) => {
-    return (
-      <FormItem key={item.label} label={item.label}>
-        {getFieldDecorator(item.field, config(item))(typeConvertion(item))}
-      </FormItem>
-    );
-  };
+  renderFormItem = (item, getFieldDecorator) => (
+    <FormItem key={item.label} label={item.label}>
+      {getFieldDecorator(item.field, config(item))(typeConvertion(item))}
+    </FormItem>
+  );
 
   handleSubmit = e => {
     e && typeof e === "object" && e.preventDefault();

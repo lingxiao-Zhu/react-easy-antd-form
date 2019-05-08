@@ -2,43 +2,43 @@
  * 通过 item.type，返回对应的控件类型
  */
 
-import React from "react";
-import { Input, InputNumber, DatePicker } from "antd";
-import Upload from "../Upload";
-import Select from "../Select";
-import Radio from "../Radio";
-import Checkbox from "../CheckBox";
+import React from 'react';
+import { Input, InputNumber, DatePicker } from 'antd';
+import Upload from '../Upload';
+import Select from '../Select';
+import Radio from '../Radio';
+import Checkbox from '../CheckBox';
 
-const RangePicker = DatePicker.RangePicker;
+const { RangePicker } = DatePicker;
 
 function TypeConversion(item) {
   let C;
   switch (item.type) {
-    case "Checkbox":
+    case 'Checkbox':
       C = Checkbox;
       break;
-    case "RangePicker":
+    case 'RangePicker':
       C = RangePicker;
       break;
-    case "DatePicker":
+    case 'DatePicker':
       C = DatePicker;
       break;
-    case "Radio":
+    case 'Radio':
       C = Radio;
       break;
-    case "Select":
+    case 'Select':
       C = Select;
       break;
-    case "Upload":
+    case 'Upload':
       C = Upload;
       break;
-    case "InputNumber":
+    case 'InputNumber':
       C = InputNumber;
       break;
-    case "Custom": // 自定义组件
+    case 'Custom': // 自定义组件
       C = item.component;
       break;
-    case "Input":
+    case 'Input':
     default:
       C = Input;
       break;
@@ -46,7 +46,7 @@ function TypeConversion(item) {
 
   const { antProps, ...otherProps } = item;
 
-  return <C item={otherProps} {...antProps} style={{ width: "100%" }} />;
+  return <C item={otherProps} {...antProps} style={{ width: '100%' }} />;
 }
 
 export default TypeConversion;

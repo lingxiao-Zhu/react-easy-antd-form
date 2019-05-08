@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import { Radio } from "antd";
+import React, { Component } from 'react';
+import { Radio } from 'antd';
 
 const RadioGroup = Radio.Group;
 
 class MyRadio extends Component {
   componentDidMount() {
+    const a = 1;
     if (!this.isOptionsValid()) {
-      console.error("使用Radio组件请传入options数组，且长度要大于0");
+      console.error('使用Radio组件请传入options数组，且长度要大于0');
     }
   }
 
@@ -30,7 +31,7 @@ class MyRadio extends Component {
         ))}
       </RadioGroup>
     ) : (
-      <span style={{ color: "red" }}>请检查配置项是否正确！！</span>
+      <span style={{ color: 'red' }}>请检查配置项是否正确！！</span>
     );
   }
 }
