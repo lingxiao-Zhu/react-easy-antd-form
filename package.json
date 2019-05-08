@@ -55,5 +55,11 @@
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-uglify": "^6.0.2"
+  },
+  "peerDependencies": {
+    "antd": "^3.17.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
