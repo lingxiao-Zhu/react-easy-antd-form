@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { isPromise } from "./_utils";
 import Form from "./Form";
 import Modal from "./Modal";
 
-class Index extends Component {
+class Index extends React.Component {
   constructor(props) {
     super(props);
     this.form = React.createRef();
