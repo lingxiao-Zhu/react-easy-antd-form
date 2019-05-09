@@ -2,42 +2,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'antd';
-import { isPromise } from './_utils';
 
 class MyModal extends PureComponent {
-  state = {
-    confirmLoading: false
-  };
-
-  onOk = () => {
-    const { FormInstance } = this.props;
-
-    const reslutPromise = FormInstance.current.handleSubmit();
-
-    reslutPromise.then(
-      (res) => {
-        // 判断外部onSubmit是否是promise
-        const { onSubmit } = this.props;
-        const Q = onSubmit(res);
-
-        if (isPromise(Q)) {
-          this.setState({
-            confirmLoading: true
-          });
-
-          Q.then(() => {
-            this.setState({
-              confirmLoading: false
-            });
-          });
-        }
-      },
-      (err) => {
-        console.warn(err);
-      }
-    );
-  };
-
   onCancel = () => {
     const { onCancel } = this.props;
 
@@ -49,20 +15,21 @@ class MyModal extends PureComponent {
   };
 
   render() {
-    const { confirmLoading } = this.state;
+    // eslint-disable-next-line object-curly-newline
+    const { title, visible, children, footer } = this.props;
 
-    const { title, visible, children } = this.props;
+    const MFooter = React.cloneElement(footer, {
+      type: 'modal',
+      onCancel: this.onCancel
+    });
 
     return (
       <Modal
         title={title}
         visible={visible}
-        cancelText="取消"
-        okText="确认"
         destroyOnClose
+        footer={MFooter}
         maskClosable={false}
-        confirmLoading={confirmLoading}
-        onOk={this.onOk}
         onCancel={this.onCancel}
       >
         {children}
@@ -72,8 +39,7 @@ class MyModal extends PureComponent {
 }
 
 MyModal.propTypes = {
-  FormInstance: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  footer: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   visible: PropTypes.bool.isRequired,
