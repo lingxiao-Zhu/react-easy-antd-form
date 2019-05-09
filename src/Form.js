@@ -20,7 +20,8 @@ class MyForm extends PureComponent {
     return new Promise((resove, reject) => {
       form.validateFields((err, fieldsValue) => {
         if (err) {
-          reject(new Error('请将信息填写完整'));
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject('请将信息填写完整');
         }
         resove(fieldsValue);
       });
@@ -28,12 +29,15 @@ class MyForm extends PureComponent {
   };
 
   render() {
-    const { fields, form, layout } = this.props;
+    const { fields, form, mode } = this.props;
     const { getFieldDecorator } = form;
 
     return (
-      <Form onSubmit={this.handleSubmit}>
-        {layout === 'vertical' ? (
+      <Form
+        onSubmit={this.handleSubmit}
+        layout={mode === 'search' ? 'inline' : 'horizontal'}
+      >
+        {mode !== 'plain' ? (
           fields.map(item => this.renderFormItem(item, getFieldDecorator))
         ) : (
           <Row type="flex" gutter={30}>
@@ -52,19 +56,14 @@ class MyForm extends PureComponent {
 MyForm.propTypes = {
   form: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
-  layout: PropTypes.string.isRequired,
+  mode: PropTypes.string.isRequired
 };
 
 const HocForm = Form.create()(MyForm);
 
 HocForm.propTypes = {
-  form: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
-  layout: PropTypes.string,
-};
-
-HocForm.defaultProps = {
-  layout: 'vertical', // "vertical", "horizental"
+  mode: PropTypes.string.isRequired
 };
 
 export default HocForm;

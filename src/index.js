@@ -1,76 +1,50 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isPromise } from './_utils';
 import Form from './Form';
 import Modal from './Modal';
 
-class Index extends React.Component {
-  constructor(props) {
-    super(props);
-    this.form = React.createRef();
-    this.state = {
-      confirmLoading: false,
-    };
-  }
-
-  onOk = () => {
-    const reslutPromise = this.form.current.handleSubmit();
-
-    reslutPromise.then((res) => {
-      // 判断外部onSubmit是否是promise
-      const { onSubmit } = this.props;
-      const Q = onSubmit(res);
-
-      if (isPromise(Q)) {
-        this.setState({
-          confirmLoading: true,
-        });
-
-        Q.then(() => {
-          this.setState({
-            confirmLoading: false,
-          });
-        });
-      }
-    });
-  };
+class EasyAntdForm extends React.Component {
+  _formInstance = React.createRef();
 
   render() {
-    const {
- modal, title, visible, onCancel, ...otherProps 
-} = this.props;
-    const { confirmLoading } = this.state;
+    const { mode, fields, ...otherProps } = this.props;
 
-    return modal ? (
-      <Modal
-        title={title}
-        visible={visible}
-        onOk={this.onOk}
-        onCancel={onCancel}
-        confirmLoading={confirmLoading}
-      >
-        <Form wrappedComponentRef={this.form} {...otherProps} />
+    const _form = (
+      <Form
+        wrappedComponentRef={this._formInstance}
+        fields={fields}
+        mode={mode}
+      />
+    );
+
+    return mode === 'modal' ? (
+      <Modal {...otherProps} FormInstance={this._formInstance}>
+        {_form}
       </Modal>
     ) : (
-      <Form {...this.props} />
+      _form
     );
   }
 }
 
-Index.propTypes = {
+EasyAntdForm.propTypes = {
   fields: PropTypes.array.isRequired,
-  layout: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  mode: PropTypes.string,
+  onSubmit: PropTypes.func,
   // 下面的属性都是modal模式下独有的
-  modal: PropTypes.bool,
-  visible: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  visible: PropTypes.bool,
+  onCancel: PropTypes.func
 };
 
-Index.defaultProps = {
-  modal: false,
-  layout: 'vertical', // "vertical", "horizental"
+EasyAntdForm.defaultProps = {
+  mode: 'default', // default, modal, search, plain
+  onSubmit: null, // modal模式必须传；其他模式下，如果传了，组件内就会显示button；如果onSubmit是promise，button会自动管理loading效果
+  // 下面的属性都是modal模式下独有的
+  title: 'form提交',
+  visible: false,
+  onCancel: null
 };
 
-export default Index;
+export default EasyAntdForm;

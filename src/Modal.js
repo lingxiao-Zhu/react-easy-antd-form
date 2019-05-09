@@ -1,20 +1,57 @@
+/* eslint-disable no-console */
 import React, { PureComponent } from 'react';
-import { Modal } from 'antd';
 import PropTypes from 'prop-types';
+import { Modal } from 'antd';
+import { isPromise } from './_utils';
 
 class MyModal extends PureComponent {
-  /**
-   * props.onOk其实是form组件的handleSubmit
-   */
+  state = {
+    confirmLoading: false
+  };
+
   onOk = () => {
-    const { onOk } = this.props;
-    onOk();
+    const { FormInstance } = this.props;
+
+    const reslutPromise = FormInstance.current.handleSubmit();
+
+    reslutPromise.then(
+      (res) => {
+        // 判断外部onSubmit是否是promise
+        const { onSubmit } = this.props;
+        const Q = onSubmit(res);
+
+        if (isPromise(Q)) {
+          this.setState({
+            confirmLoading: true
+          });
+
+          Q.then(() => {
+            this.setState({
+              confirmLoading: false
+            });
+          });
+        }
+      },
+      (err) => {
+        console.warn(err);
+      }
+    );
+  };
+
+  onCancel = () => {
+    const { onCancel } = this.props;
+
+    if (onCancel && typeof onCancel === 'function') {
+      onCancel();
+    } else {
+      console.error('modal模式下，请传入onCancel事件');
+    }
   };
 
   render() {
-    const {
- title, confirmLoading, visible, onCancel, children 
-} = this.props;
+    const { confirmLoading } = this.state;
+
+    const { title, visible, children } = this.props;
 
     return (
       <Modal
@@ -26,7 +63,7 @@ class MyModal extends PureComponent {
         maskClosable={false}
         confirmLoading={confirmLoading}
         onOk={this.onOk}
-        onCancel={onCancel}
+        onCancel={this.onCancel}
       >
         {children}
       </Modal>
@@ -35,11 +72,11 @@ class MyModal extends PureComponent {
 }
 
 MyModal.propTypes = {
+  FormInstance: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  confirmLoading: PropTypes.bool.isRequired,
   visible: PropTypes.bool.isRequired,
-  onOk: PropTypes.func.isRequired, // 调用form的handlesubmit
   onCancel: PropTypes.func.isRequired
 };
 

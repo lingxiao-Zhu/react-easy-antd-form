@@ -4,8 +4,9 @@
   "description": "基于React，Ant-Design封装的Form业务组件，方便使用。",
   "main": "build/lib/index.js",
   "scripts": {
-    "build": "cross-env BABEL_ENV=build rollup -c rollup.config.js",
-    "test": "cross-env BABEL_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "start": "parcel public/index.html --open",
+    "build": "rollup -c rollup.config.js",
+    "test": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "prebuild": "npm run lint",
     "lint": "eslint ./src --fix"
   },
@@ -49,7 +50,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
     "jest": "23",
+    "parcel": "^1.12.3",
     "react-test-renderer": "^16.8.6",
+    "rollup": "^1.11.3",
     "rollup-plugin-babel": "3",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-commonjs": "^9.3.4",

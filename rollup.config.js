@@ -26,7 +26,22 @@ export default {
       include: 'node_modules/**' // 把cjs转化为es
     }),
     babel({
-      exclude: 'node_modules/**' // 只编译我们的源代码
+      babelrc: false,
+      exclude: 'node_modules/**',
+      presets: [
+        [
+          'env',
+          {
+            modules: false,
+            targets: {
+              browsers: ['last 2 versions', 'safari >= 7']
+            }
+          }
+        ],
+        'stage-2',
+        'react'
+      ],
+      plugins: ['external-helpers']
     })
   ]
 };
