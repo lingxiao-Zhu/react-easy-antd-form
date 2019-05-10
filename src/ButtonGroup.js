@@ -13,9 +13,9 @@ class ButtonGroup extends React.PureComponent {
   onOk = () => {
     const { formInstance } = this.props;
 
-    const reslutPromise = formInstance.current.handleSubmit();
+    const resQ = formInstance.current.handleSubmit();
 
-    reslutPromise.then(
+    resQ.then(
       (res) => {
         // 判断外部onSubmit是否是promise
         const { onSubmit } = this.props;
@@ -64,8 +64,8 @@ class ButtonGroup extends React.PureComponent {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <FormItem>{otherBtn}</FormItem>
             <FormItem>{confirmBtn}</FormItem>
+            <FormItem>{otherBtn}</FormItem>
           </React.Fragment>
         )}
       </React.Fragment>
@@ -81,7 +81,7 @@ ButtonGroup.propTypes = {
 };
 
 ButtonGroup.defaultProps = {
-  mode: 'deafult',
+  mode: 'default',
   onSubmit: () => {},
   onCancel: () => {}
 };

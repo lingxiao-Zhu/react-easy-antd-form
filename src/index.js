@@ -5,7 +5,7 @@ import Form from './Form';
 import Modal from './Modal';
 import ButtonGroup from './ButtonGroup';
 
-class EasyAntdForm extends React.Component {
+class EasyForm extends React.Component {
   _formInstance = React.createRef();
 
   render() {
@@ -36,7 +36,7 @@ class EasyAntdForm extends React.Component {
   }
 }
 
-EasyAntdForm.propTypes = {
+EasyForm.propTypes = {
   fields: PropTypes.array.isRequired,
   mode: PropTypes.string,
   onSubmit: PropTypes.func,
@@ -46,7 +46,7 @@ EasyAntdForm.propTypes = {
   onCancel: PropTypes.func
 };
 
-EasyAntdForm.defaultProps = {
+EasyForm.defaultProps = {
   mode: 'default', // default, modal, search, plain
   onSubmit: null, // modal模式必须传；其他模式下，如果传了，组件内就会显示button；如果onSubmit是promise，button会自动管理loading效果
   // 下面的属性都是modal模式下独有的
@@ -55,4 +55,4 @@ EasyAntdForm.defaultProps = {
   onCancel: null
 };
 
-export default EasyAntdForm;
+export default EasyForm;
