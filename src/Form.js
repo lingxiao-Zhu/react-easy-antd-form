@@ -28,7 +28,11 @@ class MyForm extends PureComponent {
     });
   };
 
-  onReset = () => {};
+  // 重置操作
+  onReset = () => {
+    const { form } = this.props;
+    form.resetFields();
+  };
 
   render() {
     const {
@@ -58,6 +62,7 @@ class MyForm extends PureComponent {
         )}
 
         {footer
+          && mode !== 'modal'
           && React.cloneElement(footer, {
             type: 'formItem',
             onCancel: this.onReset
