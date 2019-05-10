@@ -28,8 +28,20 @@ class MyForm extends PureComponent {
     });
   };
 
+  // 重置操作
+  onReset = () => {
+    const { form } = this.props;
+    form.resetFields();
+  };
+
   render() {
-    const { fields, form, mode } = this.props;
+    const {
+      // eslint-disable-next-line object-curly-newline
+      fields,
+      form,
+      mode,
+      footer
+    } = this.props;
     const { getFieldDecorator } = form;
 
     return (
@@ -48,6 +60,13 @@ class MyForm extends PureComponent {
             ))}
           </Row>
         )}
+
+        {footer
+          && mode !== 'modal'
+          && React.cloneElement(footer, {
+            type: 'formItem',
+            onCancel: this.onReset
+          })}
       </Form>
     );
   }
@@ -56,14 +75,17 @@ class MyForm extends PureComponent {
 MyForm.propTypes = {
   form: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
-  mode: PropTypes.string.isRequired
+  mode: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  footer: PropTypes.object
 };
 
 const HocForm = Form.create()(MyForm);
 
 HocForm.propTypes = {
   fields: PropTypes.array.isRequired,
-  mode: PropTypes.string.isRequired
+  mode: PropTypes.string.isRequired,
+  footer: PropTypes.object
 };
 
 export default HocForm;

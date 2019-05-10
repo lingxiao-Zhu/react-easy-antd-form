@@ -3,23 +3,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Form from './Form';
 import Modal from './Modal';
+import ButtonGroup from './ButtonGroup';
 
 class EasyAntdForm extends React.Component {
   _formInstance = React.createRef();
 
   render() {
-    const { mode, fields, ...otherProps } = this.props;
+    // eslint-disable-next-line object-curly-newline
+    const { mode, fields, onSubmit, ...otherProps } = this.props;
+
+    // 只有onSubmit事件存在，才显示按钮
+    const _footer = onSubmit && (
+      <ButtonGroup formInstance={this._formInstance} onSubmit={onSubmit} />
+    );
 
     const _form = (
       <Form
         wrappedComponentRef={this._formInstance}
         fields={fields}
         mode={mode}
+        footer={_footer}
       />
     );
 
     return mode === 'modal' ? (
-      <Modal {...otherProps} FormInstance={this._formInstance}>
+      <Modal {...otherProps} footer={_footer}>
         {_form}
       </Modal>
     ) : (
