@@ -1,5 +1,8 @@
 import config from './config';
-import typeConvertion from './typeConvertion';
+import convert from './convert';
 import isPromise from './isPromise';
+import dateFormat from './fmt';
 
-export { config, typeConvertion, isPromise };
+export {
+ config, convert, isPromise, dateFormat 
+};

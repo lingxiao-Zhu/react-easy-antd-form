@@ -33,7 +33,7 @@ class MyCheckbox extends Component {
 }
 
 MyCheckbox.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired
 };
 
 export default MyCheckbox;

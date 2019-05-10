@@ -16,7 +16,7 @@ export default {
       format: 'es'
     }
   ],
-  external: ['react', 'antd', 'prop-types'],
+  external: ['react', 'antd', 'prop-types', 'moment'],
   plugins: [
     clear({
       targets: ['build']
