@@ -19,7 +19,7 @@ class MyModal extends PureComponent {
     const { title, visible, children, footer } = this.props;
 
     const MFooter = React.cloneElement(footer, {
-      type: 'modal',
+      mode: 'modal',
       onCancel: this.onCancel
     });
 

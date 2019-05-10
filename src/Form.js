@@ -64,7 +64,7 @@ class MyForm extends PureComponent {
         {footer
           && mode !== 'modal'
           && React.cloneElement(footer, {
-            type: 'formItem',
+            mode,
             onCancel: this.onReset
           })}
       </Form>
