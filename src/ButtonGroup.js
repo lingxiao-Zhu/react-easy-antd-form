@@ -41,34 +41,31 @@ class ButtonGroup extends React.PureComponent {
 
   render() {
     const { loading } = this.state;
-    const { type, onCancel } = this.props;
-
-    // 是否使用formItem包裹button，modal模式不需要
-    const isFormItem = type === 'formItem';
+    const { mode, onCancel } = this.props;
 
     const confirmBtn = (
       <Button onClick={this.onOk} type="primary" loading={loading}>
-        确认
+        {mode === 'search' ? '搜索' : '确认'}
       </Button>
     );
 
     const otherBtn = (
       <Button onClick={onCancel} disabled={loading}>
-        {isFormItem ? '重置' : '取消'}
+        {mode === 'search' ? '重置' : '取消'}
       </Button>
     );
 
     return (
       <React.Fragment>
-        {isFormItem ? (
-          <React.Fragment>
-            <FormItem>{otherBtn}</FormItem>
-            <FormItem>{confirmBtn}</FormItem>
-          </React.Fragment>
-        ) : (
+        {mode === 'modal' ? (
           <React.Fragment>
             {otherBtn}
             {confirmBtn}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <FormItem>{otherBtn}</FormItem>
+            <FormItem>{confirmBtn}</FormItem>
           </React.Fragment>
         )}
       </React.Fragment>
@@ -77,14 +74,14 @@ class ButtonGroup extends React.PureComponent {
 }
 
 ButtonGroup.propTypes = {
-  type: PropTypes.string,
+  mode: PropTypes.string,
   formInstance: PropTypes.object.isRequired,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func
 };
 
 ButtonGroup.defaultProps = {
-  type: 'formItem',
+  mode: 'deafult',
   onSubmit: () => {},
   onCancel: () => {}
 };
