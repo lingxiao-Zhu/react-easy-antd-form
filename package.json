@@ -1,6 +1,6 @@
 {
   "name": "react-easy-antd-form",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "基于React，Ant-Design封装的Form业务组件，方便使用。",
   "main": "build/lib/index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "build": "rollup -c rollup.config.js",
     "test": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "prebuild": "npm run lint",
+    "prepublish": "npm run build",
     "lint": "eslint ./src --fix"
   },
   "repository": {
