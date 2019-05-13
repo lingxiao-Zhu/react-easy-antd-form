@@ -51,6 +51,7 @@ import Form from "react-easy-antd-form";
 | antProps     | 支持 AntD 控件自带的所有属性                                                 | eg：{ addonBefore: 'Http://' }                                                                              | null         |
 | required     | 是否必填                                                                     | boolean                                                                                                     | true         |
 | type         | 控件类型                                                                     | 'Checkbox','RangePicker','DatePicker','Radio','Select','InputNumber','Custom','Input', 'Custom'为自定义组件 | 'Input'      |
+| options      | type=Radio、Select、Checkbox 时，选项数组                                    | [{ label: '男', value:'1' },{ label: '女', value:'2' }]                                                     | null         |
 | component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `<CustomComponent>`                                                                                         | null         |
 | format       | type=DatePicker 或者 RangePicker 时，日期格式                                | string                                                                                                      | 'YYYY-MM-DD' |
 
