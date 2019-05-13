@@ -8,6 +8,8 @@ import ModalMode from './modalMode';
 import SearchMode from './searchMode';
 import PlainMode from './plainMode';
 
+import Compare from './compare';
+
 const { Panel } = Collapse;
 
 class App extends React.Component {
@@ -16,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Collapse defaultActiveKey={['3']}>
+        <Collapse defaultActiveKey={['5']}>
           <Panel header="1.默认类型" key="1">
             <DefaultMode />
           </Panel>
@@ -28,6 +30,12 @@ class App extends React.Component {
           </Panel>
           <Panel header="4.数据录入模式：用于平铺型表单提交" key="4">
             <PlainMode />
+          </Panel>
+          <Panel
+            header="5.antd 的form和 react-easy-antd-form 相同功能，代码量对比"
+            key="5"
+          >
+            <Compare />
           </Panel>
         </Collapse>
       </div>

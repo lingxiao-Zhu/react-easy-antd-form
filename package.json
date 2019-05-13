@@ -4,7 +4,7 @@
   "description": "基于React，Ant-Design封装的Form业务组件，方便使用。",
   "main": "build/lib/index.js",
   "scripts": {
-    "start": "parcel public/index.html --open",
+    "start": "parcel demo/index.html --open",
     "build": "rollup -c rollup.config.js",
     "test": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "prepublishOnly": "npm run build",
