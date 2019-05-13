@@ -14,7 +14,7 @@
 
 在 demo 文件夹下的 compare 文件夹中，通过 AntD 的 form 组件和 react-easy-antd-form(简称:reaf)，实现一个通过弹出框新增用户的功能进行对比（只使用了三个控件），AntD 的代码量 109 行，reaf 为 64 行。
 可想而知，随着录入数据的增多，代码量的差距会越来越多，维护和升级成本也越来越大。
-![功能截图](/screenshots/01.png)
+![功能截图](/screenshots/1.png)
 
 ## 前提
 
