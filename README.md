@@ -1,6 +1,6 @@
 # react-easy-antd-form
 
-基于 React，Ant-Design 封装的声明式 Form 业务组件，方便快捷构建表单，减少大量业务代码。
+基于 React，Ant-Design 封装的声明式 Form 业务组件，方便快捷构建表单，减少大量业务代码，并支持 AntD 控件的所有属性。
 
 [![Build Status](https://travis-ci.org/lingxiao-Zhu/react-easy-antd-form.svg?branch=master)](https://travis-ci.org/lingxiao-Zhu/react-easy-antd-form)
 [![Coverage Status](https://coveralls.io/repos/github/lingxiao-Zhu/react-easy-antd-form/badge.svg?branch=master)](https://coveralls.io/github/lingxiao-Zhu/react-easy-antd-form?branch=master)
@@ -9,6 +9,12 @@
 ![](https://img.shields.io/npm/dw/react-easy-antd-form.svg)
 ![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/react.svg)
 ![](https://img.shields.io/npm/dependency-version/react-easy-antd-form/antd.svg)
+
+## 效果
+
+在 demo 文件夹下的 compare 文件夹中，通过 AntD 的 form 组件和 react-easy-antd-form(简称:reaf)，实现一个通过弹出框新增用户的功能进行对比（只使用了三个控件），AntD 的代码量 109 行，reaf 为 64 行。
+可想而知，随着录入数据的增多，代码量的差距会越来越多，维护和升级成本也越来越大。
+![功能截图](/screenshots/1.png)
 
 ## 前提
 
@@ -48,130 +54,9 @@ import Form from "react-easy-antd-form";
 | component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `<CustomComponent>`                                                                                         | null         |
 | format       | type=DatePicker 或者 RangePicker 时，日期格式                                | string                                                                                                      | 'YYYY-MM-DD' |
 
-## Demo
+## 使用
 
-#### modal 模式
-
-```javascript
- state = {
-    visible: false,
-    fields: [
-      {
-        field: 'name',
-        label: '名称',
-        type: 'Input',
-        antProps: {
-          addonBefore: 'Http://'
-        }
-      },
-      {
-        field: 'select',
-        label: 'Select',
-        type: 'Select',
-        initialValue: '22',
-        options: [
-          {
-            label: '11',
-            value: '11'
-          },
-          {
-            label: '22',
-            value: '22'
-          }
-        ]
-      }
-    ]
-  };
-
-  open = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  cancel = () => {
-    this.setState({
-      visible: false
-    });
-  };
-
-  onSubmit = (res) => {
-    console.log(res);
-
-    // 返回一个promise，form组件会自动进行loading开启和关闭
-    return new Promise((resolve) => {
-      setTimeout(resolve, 1000);
-      // this.onCancel()
-    }).catch(() => console.log('Oops errors!'));
-  };
-
-   render() {
-    const { fields, visible } = this.state;
-
-    return (
-      <div>
-        <Button type="primary" onClick={this.open}>
-          新增
-        </Button>
-        <Form
-          title="新增"
-          fields={fields}
-          mode="modal"
-          visible={visible}
-          onCancel={this.cancel}
-          onSubmit={this.onSubmit}
-        />
-      </div>
-    );
-  }
-```
-
-#### search 模式
-
-```javascript
-state = {
-    fields: [
-      {
-        field: 'name',
-        label: '名称',
-        type: 'Input'
-      },
-      {
-        field: 'DatePicker',
-        label: 'DatePicker',
-        type: 'DatePicker',
-        initialValue: 1557477865444,
-        required: false
-      },
-      {
-        field: 'RangePicker',
-        label: 'RangePicker',
-        initialValue: ['2019-12-10', 1557477865444],
-        type: 'RangePicker',
-        required: false
-      }
-    ]
-  };
-
-  onSubmit = (res) => {
-    console.log(res);
-
-    // 返回一个promise，form组件会自动进行loading开启和关闭
-    return new Promise((resolve) => {
-      setTimeout(resolve, 1000);
-    }).catch(() => console.log('Oops errors!'));
-  };
-
-  render() {
-    const { fields } = this.state;
-
-    return (
-      <div>
-        <Form fields={fields} mode="search" onSubmit={this.onSubmit} />
-      </div>
-    );
-  }
-```
+详细使用请查看 demo 文件夹。
 
 ## 有问题？加入我们
 

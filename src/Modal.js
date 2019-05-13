@@ -18,10 +18,13 @@ class MyModal extends PureComponent {
     // eslint-disable-next-line object-curly-newline
     const { title, visible, children, footer } = this.props;
 
-    const MFooter = React.cloneElement(footer, {
-      mode: 'modal',
-      onCancel: this.onCancel
-    });
+    // eslint-disable-next-line operator-linebreak
+    const MFooter =
+      footer
+      && React.cloneElement(footer, {
+        mode: 'modal',
+        onCancel: this.onCancel
+      });
 
     return (
       <Modal
