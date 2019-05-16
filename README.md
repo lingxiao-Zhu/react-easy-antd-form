@@ -14,6 +14,7 @@
 
 在 demo 文件夹下的 compare 文件夹中，通过 AntD 的 form 组件和 react-easy-antd-form(简称:reaf)，实现一个通过弹出框新增用户的功能进行对比（只使用了三个控件），AntD 的代码量 109 行，reaf 为 64 行。
 可想而知，随着录入数据的增多，代码量的差距会越来越多，维护和升级成本也越来越大。
+
 ![功能截图](/screenshots/1.png)
 
 ## 前提
@@ -43,17 +44,23 @@ import Form from "react-easy-antd-form";
 
 ## field 结构
 
-| 名称         | 说明                                                                         | 类型                                                                                                        | 默认值       |
-| ------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------ |
-| field        | 表单字段，用于提交后台                                                       | string                                                                                                      | null，必传   |
-| label        | 字段展示名称                                                                 | string                                                                                                      | null，必传   |
-| initialValue | 默认值                                                                       |                                                                                                             | null         |
-| antProps     | 支持 AntD 控件自带的所有属性                                                 | eg：{ addonBefore: 'Http://' }                                                                              | null         |
-| required     | 是否必填                                                                     | boolean                                                                                                     | true         |
-| type         | 控件类型                                                                     | 'Checkbox','RangePicker','DatePicker','Radio','Select','InputNumber','Custom','Input', 'Custom'为自定义组件 | 'Input'      |
-| options      | type=Radio、Select、Checkbox 时，选项数组                                    | [{ label: '男', value:'1' },{ label: '女', value:'2' }]                                                     | null         |
-| component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `<CustomComponent>`                                                                                         | null         |
-| format       | type=DatePicker 或者 RangePicker 时，日期格式                                | string                                                                                                      | 'YYYY-MM-DD' |
+| 名称         | 说明                                                                         | 类型                                                    | 默认值       |
+| ------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ |
+| field        | 表单字段，用于提交后台                                                       | string                                                  | null，必传   |
+| label        | 字段展示名称                                                                 | string                                                  | null，必传   |
+| initialValue | 默认值                                                                       |                                                         | null         |
+| antProps     | 支持 AntD 控件自带的所有属性                                                 | eg：{ addonBefore: 'Http://' }                          | null         |
+| required     | 是否必填                                                                     | boolean                                                 | true         |
+| type         | 控件类型                                                                     | 具体描述在下方                                          | 'Input'      |
+| options      | type=Radio、Select、Checkbox 时，选项数组                                    | [{ label: '男', value:'1' },{ label: '女', value:'2' }] | null         |
+| component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `<CustomComponent>`                                     | null         |
+| format       | type=DatePicker 或者 RangePicker 时，日期格式                                | string                                                  | 'YYYY-MM-DD' |
+
+## 控件类型 ‘type’ 说明
+
+- 组件内部已经封装好'Checkbox', 'RangePicker', 'DatePicker','Radio', 'Select', 'InputNumber', 'Custom', 'Input'
+- 'Custom'为自定义组件类型
+- 通过 type='Custom'，component 传入组件实例，理论上支持所有控件
 
 ## 使用
 
