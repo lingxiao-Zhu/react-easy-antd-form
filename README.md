@@ -60,7 +60,7 @@ import Form from "react-easy-antd-form";
 | required     | 是否必填                                                                     | boolean                                                 | true         |
 | type         | 控件类型                                                                     | 具体描述在下方                                          | 'Input'      |
 | options      | type=Radio、Select、Checkbox 时，选项数组                                    | [{ label: '男', value:'1' },{ label: '女', value:'2' }] | null         |
-| component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `<CustomComponent>`                                     | null         |
+| component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `CustomComponent`                                       | null         |
 | format       | type=DatePicker 或者 RangePicker 时，日期格式                                | string                                                  | 'YYYY-MM-DD' |
 
 ## 控件类型 ‘type’ 说明
@@ -68,6 +68,19 @@ import Form from "react-easy-antd-form";
 - 组件内部已经封装好'Checkbox', 'RangePicker', 'DatePicker','Radio', 'Select', 'InputNumber', 'Custom', 'Input'
 - 'Custom'为自定义组件类型
 - 通过 type='Custom'，component 传入组件实例，理论上支持所有控件
+
+```javascript
+// 此例子中，引入一个自己开发的富文本框。
+// RichText组件内部需要调用this.props.onChange，将值赋予表单
+import RichText from './RichText';
+...
+{
+    field: "content",
+    label: "商品详情",
+    type: "Custom",
+    component: RichText
+}
+```
 
 ## 使用
 
