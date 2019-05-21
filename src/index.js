@@ -10,11 +10,22 @@ class EasyForm extends React.Component {
 
   render() {
     // eslint-disable-next-line object-curly-newline
-    const { mode, fields, onSubmit, ...otherProps } = this.props;
+    const {
+      mode,
+      isModal,
+      fields,
+      onSubmit,
+      modalWidth,
+      ...otherProps
+    } = this.props;
 
     // 只有onSubmit事件存在，才显示按钮
     const _footer = onSubmit && (
-      <ButtonGroup formInstance={this._formInstance} onSubmit={onSubmit} />
+      <ButtonGroup
+        formInstance={this._formInstance}
+        onSubmit={onSubmit}
+        mode={mode}
+      />
     );
 
     const _form = (
@@ -22,12 +33,12 @@ class EasyForm extends React.Component {
         wrappedComponentRef={this._formInstance}
         fields={fields}
         mode={mode}
-        footer={_footer}
+        footer={isModal ? null : _footer}
       />
     );
 
-    return mode === 'modal' ? (
-      <Modal {...otherProps} footer={_footer}>
+    return isModal ? (
+      <Modal {...otherProps} modalWidth={modalWidth} footer={_footer}>
         {_form}
       </Modal>
     ) : (
@@ -39,17 +50,21 @@ class EasyForm extends React.Component {
 EasyForm.propTypes = {
   fields: PropTypes.array.isRequired,
   mode: PropTypes.string,
+  isModal: PropTypes.bool,
   onSubmit: PropTypes.func,
   // 下面的属性都是modal模式下独有的
   title: PropTypes.string,
   visible: PropTypes.bool,
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
+  modalWidth: PropTypes.number
 };
 
 EasyForm.defaultProps = {
-  mode: 'default', // default, modal, search, plain
+  mode: 'default', // default, search, plain
+  isModal: false, // 是否是弹窗模式
   onSubmit: null, // modal模式必须传；其他模式下，如果传了，组件内就会显示button；如果onSubmit是promise，button会自动管理loading效果
   // 下面的属性都是modal模式下独有的
+  modalWidth: 520, // modal宽度
   title: 'form提交',
   visible: false,
   onCancel: null

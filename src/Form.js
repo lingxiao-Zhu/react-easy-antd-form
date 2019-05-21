@@ -55,17 +55,21 @@ class MyForm extends PureComponent {
         ) : (
           <Row type="flex" gutter={30}>
             {fields.map((item, index) => (
-              <Col key={index} xs={24} sm={8} xl={6}>
+              <Col
+                key={index}
+                xs={24}
+                sm={item.separate ? 24 : 8}
+                xl={item.separate ? 24 : 6}
+              >
                 {this.renderFormItem(item, getFieldDecorator)}
               </Col>
             ))}
           </Row>
         )}
 
+        {/* 非modal模式下，在form表单中显示按钮 */}
         {footer
-          && mode !== 'modal'
           && React.cloneElement(footer, {
-            mode,
             onCancel: this.onReset
           })}
       </Form>

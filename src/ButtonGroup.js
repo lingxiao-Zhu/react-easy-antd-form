@@ -17,7 +17,6 @@ class ButtonGroup extends React.PureComponent {
 
     resQ.then(
       (res) => {
-        // 判断外部onSubmit是否是promise
         const { onSubmit } = this.props;
         const Q = onSubmit(res);
 
@@ -42,30 +41,31 @@ class ButtonGroup extends React.PureComponent {
   render() {
     const { loading } = this.state;
     const { mode, onCancel } = this.props;
+    const isSearch = mode === 'search';
 
     const confirmBtn = (
       <Button onClick={this.onOk} type="primary" loading={loading}>
-        {mode === 'search' ? '搜索' : '确认'}
+        {isSearch ? '搜索' : '确认'}
       </Button>
     );
 
     const otherBtn = (
-      <Button onClick={onCancel} disabled={loading}>
-        {mode === 'search' ? '重置' : '取消'}
+      <Button onClick={onCancel} disabled={loading} style={{ marginRight: 10 }}>
+        {isSearch ? '重置' : '取消'}
       </Button>
     );
 
     return (
       <React.Fragment>
-        {mode === 'modal' ? (
-          <React.Fragment>
-            {otherBtn}
-            {confirmBtn}
-          </React.Fragment>
-        ) : (
+        {isSearch ? (
           <React.Fragment>
             <FormItem>{confirmBtn}</FormItem>
             <FormItem>{otherBtn}</FormItem>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {otherBtn}
+            {confirmBtn}
           </React.Fragment>
         )}
       </React.Fragment>

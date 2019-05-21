@@ -49,7 +49,7 @@ class form extends React.Component {
           新增用户
         </Button>
         <Form
-          mode="modal"
+          isModal
           fields={fields}
           title="新增用户"
           visible={visible}

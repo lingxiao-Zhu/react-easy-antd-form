@@ -61,6 +61,6 @@ export default class DefaultMode extends React.Component {
   render() {
     const { fields } = this.state;
 
-    return <Form fields={fields} />;
+    return <Form fields={fields} onSubmit={() => {}} />;
   }
 }
