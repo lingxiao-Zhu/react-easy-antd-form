@@ -91,9 +91,11 @@ export default class ModalMode extends React.Component {
           新增
         </Button>
         <Form
+          isModal
+          modalWidth={1100}
+          mode="plain"
           title="新增"
           fields={fields}
-          mode="modal"
           visible={visible}
           onCancel={this.cancel}
           onSubmit={this.onSubmit}

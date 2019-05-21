@@ -18,18 +18,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Collapse defaultActiveKey={['5']}>
-          <Panel header="1.默认类型" key="1">
+        <Collapse defaultActiveKey={['2']}>
+          <Panel header="1.mode=default" key="1">
             <DefaultMode />
           </Panel>
-          <Panel header="2.弹出框类型：用于新增、修改操作" key="2">
-            <ModalMode />
-          </Panel>
-          <Panel header="3.搜索框模式：用于搜索" key="3">
+          <Panel header="2.mode=search" key="2">
             <SearchMode />
           </Panel>
-          <Panel header="4.数据录入模式：用于平铺型表单提交" key="4">
+          <Panel header="3.mode=plain" key="3">
             <PlainMode />
+          </Panel>
+          <Panel header="4.isModal=true" key="4">
+            <ModalMode />
           </Panel>
           <Panel
             header="5.antd 的form和 react-easy-antd-form 相同功能，代码量对比"

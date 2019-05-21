@@ -16,19 +16,19 @@ class MyModal extends PureComponent {
 
   render() {
     // eslint-disable-next-line object-curly-newline
-    const { title, visible, children, footer } = this.props;
+    const { title, visible, children, footer, modalWidth } = this.props;
 
     // eslint-disable-next-line operator-linebreak
     const MFooter =
       footer
       && React.cloneElement(footer, {
-        mode: 'modal',
         onCancel: this.onCancel
       });
 
     return (
       <Modal
         title={title}
+        width={modalWidth}
         visible={visible}
         destroyOnClose
         footer={MFooter}
@@ -46,7 +46,8 @@ MyModal.propTypes = {
   children: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   visible: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired
+  onCancel: PropTypes.func.isRequired,
+  modalWidth: PropTypes.number.isRequired
 };
 
 export default MyModal;

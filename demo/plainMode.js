@@ -27,6 +27,7 @@ export default class PlainMode extends React.Component {
         field: 'Radio',
         label: 'Radio',
         type: 'Radio',
+        separate: true,
         initialValue: '11',
         options: [
           {
@@ -63,7 +64,7 @@ export default class PlainMode extends React.Component {
 
     return (
       <div>
-        <Form fields={fields} mode="plain" />
+        <Form fields={fields} mode="plain" onSubmit={() => {}} />
       </div>
     );
   }

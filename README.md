@@ -40,14 +40,16 @@ import Form from "react-easy-antd-form";
 
 ## 参数
 
-| 名称     | 说明                                                                                                                                 | 类型                                  | 默认值     |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ---------- |
-| fields   | 需要渲染出的表单列表                                                                                                                 | 数组[field]，field 类型见下方         | null，必传 |
-| mode     | 表单展示类型                                                                                                                         | 'default'，'modal', 'search', 'plain' | 'default'  |
-| onSubmit | 数据验证成功后回调事件，能接受到数据；而且传入后表单会渲染内置 Button, 如果函数中返回一个 promise， button 还会自动管理 loading 效果 | Function(values)                      | null       |
-| title    | mode=modal 时，弹框的名称                                                                                                            | string                                | form 提交  |
-| visible  | mode=modal 时，对话框是否可见                                                                                                        | boolean                               | false      |
-| onCancel | mode=modal 时，点击遮罩层或右上角叉或取消按钮的回调，一般用于设置 visible 为 false                                                   | function                              | null       |
+| 名称       | 说明                                                                                                                                 | 类型                          | 默认值     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- | ---------- |
+| fields     | 需要渲染出的表单列表                                                                                                                 | 数组[field]，field 类型见下方 | null，必传 |
+| mode       | 表单排列方式                                                                                                                         | 'default', 'search', 'plain'  | 'default'  |
+| onSubmit   | 数据验证成功后回调事件，能接受到数据；而且传入后表单会渲染内置 Button, 如果函数中返回一个 promise， button 还会自动管理 loading 效果 | Function(values)              | null       |
+| isModal    | 是否以弹窗模式展示                                                                                                                   | boolean                       | false      |
+| title      | isModal=true 时，弹框的名称                                                                                                          | string                        | form 提交  |
+| visible    | isModal=true 时，对话框是否可见                                                                                                      | boolean                       | false      |
+| modalWidth | isModal=true 时，弹框的宽度                                                                                                          | number                        | 520        |
+| onCancel   | isModal=true 时，点击遮罩层或右上角叉或取消按钮的回调，一般用于设置 visible 为 false                                                 | function                      | null       |
 
 ## field 结构
 
@@ -59,6 +61,7 @@ import Form from "react-easy-antd-form";
 | antProps     | 支持 AntD 控件自带的所有属性                                                 | eg：{ addonBefore: 'Http://' }                          | null         |
 | required     | 是否必填                                                                     | boolean                                                 | true         |
 | type         | 控件类型                                                                     | 具体描述在下方                                          | 'Input'      |
+| separate     | 组件是否单独一行排列，用于富文本等大控件，仅当 mode=plain 有效               | boolean                                                 | false        |
 | options      | type=Radio、Select、Checkbox 时，选项数组                                    | [{ label: '男', value:'1' },{ label: '女', value:'2' }] | null         |
 | component    | type=Custom 时，传入的自定义组件。组件接受的 props 属性：value 和 onChange。 | `CustomComponent`                                       | null         |
 | format       | type=DatePicker 或者 RangePicker 时，日期格式                                | string                                                  | 'YYYY-MM-DD' |
